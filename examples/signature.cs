@@ -39,7 +39,7 @@ namespace ImgProxy.Examples
             {
                 var hash = hmac.ComputeHash(saltBin.Concat(Encoding.UTF8.GetBytes(path)).ToArray());
 
-                return $"/{Convert.ToBase64String(hash).TrimEnd('=')}{path}";
+                return $"/{Convert.ToBase64String(hash).Replace('+', '-').Replace('/', '_').TrimEnd('=')}{path}";
             }
         }
 
